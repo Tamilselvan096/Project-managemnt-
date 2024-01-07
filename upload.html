@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Project</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('./background.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: auto; /* Set overflow to auto to enable scrolling */
+        }
+
+        header {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #uploadContainer {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+            max-height: 80vh; /* Set a maximum height for the container */
+            overflow-y: auto; /* Enable vertical scrolling if needed */
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        #submitBtn, #addRollBtn {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #rollNumberContainer {
+            text-align: left;
+        }
+
+        .yearDropdown {
+            width: 48%; /* Adjust as needed */
+            margin-right: 2%; /* Adjust as needed */
+        }
+
+        #yearSubTopic {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Upload Project</h1>
+    </header>
+
+    <div id="uploadContainer">
+        <input type="text" placeholder="Title" id="titleInput">
+        <button onclick="checkTitle()">Check Title</button>
+
+        <select id="teamMembersInput" onchange="addRollNumberInput()">
+            <option value="1">1 Team Member</option>
+            <option value="2">2 Team Members</option>
+            <option value="3">3 Team Members</option>
+            <option value="4">4 Team Members</option>
+            <option value="5">5 Team Members</option>
+            <option value="6">6 Team Members</option>
+            <option value="7">7 Team Members</option>
+            <option value="8">8 Team Members</option>
+            <option value="9">9 Team Members</option>
+            <option value="10">10 Team Members</option>
+        </select>
+
+        <div id="rollNumberContainer"></div>
+
+        <input type="url" placeholder="Link Box" id="linkInput">
+
+        <div id="yearSubTopic">College Duration:</div>
+
+        <select class="yearDropdown" id="startYearInput">
+            <!-- Dynamically generate start year options -->
+            <script>
+                var startYearDropdown = document.getElementById('startYearInput');
+                for (var i = 1999; i <= 3000; i++) {
+                    var option = document.createElement('option');
+                    option.value = i;
+                    option.text = i;
+                    startYearDropdown.add(option);
+                }
+            </script>
+        </select>
+
+        <select class="yearDropdown" id="endYearInput">
+            <!-- Dynamically generate end year options -->
+            <script>
+                var endYearDropdown = document.getElementById('endYearInput');
+                for (var i = 2003; i <= 3000; i++) {
+                    var option = document.createElement('option');
+                    option.value = i;
+                    option.text = i;
+                    endYearDropdown.add(option);
+                }
+            </script>
+        </select>
+
+        <input type="file" id="fileInput">
+
+        <a href="project/project.html"><button onclick="submitProject()" id="submitBtn">Submit</button></a>
+    </div>
+
+    <script>
+        function checkTitle() {
+            var title = document.getElementById('titleInput').value;
+            // Add logic to check if the title already exists
+            // For demonstration purposes, just showing an alert
+            alert('Checking if the title "' + title + '" already exists...');
+        }
+
+        function addRollNumberInput() {
+            var teamMembers = document.getElementById('teamMembersInput').value;
+            var rollNumberContainer = document.getElementById('rollNumberContainer');
+
+            // Clear existing roll number inputs
+            rollNumberContainer.innerHTML = '';
+
+            // Add new roll number inputs based on the selected team members count
+            for (var i = 1; i <= teamMembers; i++) {
+                var rollNumberInput = document.createElement('input');
+                rollNumberInput.type = 'text';
+                rollNumberInput.placeholder = 'Roll Number ' + i;
+                rollNumberContainer.appendChild(rollNumberInput);
+            }
+        }
+
+        function submitProject() {
+            var title = document.getElementById('titleInput').value;
+            var teamMembers = document.getElementById('teamMembersInput').value;
+            var link = document.getElementById('linkInput').value;
+            var startYear = document.getElementById('startYearInput').value;
+            var endYear = document.getElementById('endYearInput').value;
+            var file = document.getElementById('fileInput').value;
+
+            // Add logic to handle project submission
+            // For demonstration purposes, just showing an alert with project details
+            alert('Submitting Project:\nTitle: ' + title + '\nTeam Members: ' + teamMembers +
+                '\nLink: ' + link + '\nProject Duration: ' + startYear + ' to ' + endYear +
+                '\nFile: ' + file);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management - Project Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('../background.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .back{
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            
+        }
+
+        header {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #loginContainer {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #uploadProjectBtn, #yourProjectsBtn {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px 0;
+            font-size: 16px;
+            display: block;
+            width: 100%; /* Make the buttons full width */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Project Profile</h1>
+    </header>
+
+    <div id="loginContainer">
+        <a href="../upload.html"><button id="uploadProjectBtn" onclick="showPage('uploadProjectPage')">Upload Project</button></a>
+        <a href="../your.html"><button id="yourProjectsBtn" onclick="showPage('yourProjectsPage')">Your Projects</button></a>
+    </div>
+
+    <div id="uploadProjectPage" style="display:contents;">
+        <!-- Project upload page content (if needed) -->
+    </div>
+
+    <div id="yourProjectsPage" style="display:contents;">
+        <!-- Your Projects page content (if needed) -->
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.getElementById('uploadProjectPage').style.display = 'none';
+            document.getElementById('yourProjectsPage').style.display = 'none';
+
+            document.getElementById(pageId).style.display = 'block';
+        }
+    </script>
+<a href="./Index.html"><button class="back">Logout</button></body></a>
+</body>
+</html>
